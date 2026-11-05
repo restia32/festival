@@ -698,6 +698,15 @@ button {
   transition: transform 0.35s cubic-bezier(0.2, 0.7, 0.2, 1), box-shadow 0.35s ease, border-color 0.35s ease;
 }
 
+.attraction-photo {
+  width: calc(100% + 56px);
+  max-width: none;
+  height: 180px;
+  margin: -28px -28px 22px;
+  object-fit: cover;
+  object-position: center;
+}
+
 .card::after {
   content: "";
   position: absolute;
