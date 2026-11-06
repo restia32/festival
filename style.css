@@ -2317,7 +2317,20 @@ body.reveal-ready [data-reveal].is-visible {
   }
 
   .hero-small {
-    display: none;
+    display: block;
+    width: 28%;
+    border-width: 3px;
+    border-radius: 15px;
+  }
+
+  .hero-small-a {
+    top: -3%;
+    left: 0;
+  }
+
+  .hero-small-b {
+    right: 0;
+    bottom: 10%;
   }
 
   .hero-badge {
