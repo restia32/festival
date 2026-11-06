@@ -82,6 +82,27 @@ function handleHeaderScroll() {
 window.addEventListener("scroll", handleHeaderScroll, { passive: true });
 handleHeaderScroll();
 
+// Scroll progress bar and back-to-top control
+const scrollProgress = document.getElementById("scrollProgress");
+const toTopButton = document.getElementById("toTop");
+
+function updateScrollUi() {
+  const scrollable = document.documentElement.scrollHeight - window.innerHeight;
+  const progress = scrollable > 0 ? Math.min(window.scrollY / scrollable, 1) : 0;
+
+  scrollProgress.style.transform = `scaleX(${progress})`;
+  toTopButton.classList.toggle("show", window.scrollY > 600);
+}
+
+window.addEventListener("scroll", updateScrollUi, { passive: true });
+window.addEventListener("resize", updateScrollUi);
+updateScrollUi();
+
+toTopButton.addEventListener("click", () => {
+  const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  window.scrollTo({ top: 0, behavior: reduceMotion ? "auto" : "smooth" });
+});
+
 // Attraction filters
 const filterButtons = document.querySelectorAll(".filter");
 const attractions = document.querySelectorAll(".attraction");
@@ -103,6 +124,18 @@ filterButtons.forEach(button => {
 
       attraction.hidden = !match;
     });
+  });
+});
+
+// FAQ category shortcuts
+document.querySelectorAll("[data-faq-target]").forEach(button => {
+  button.addEventListener("click", () => {
+    const target = document.getElementById(button.dataset.faqTarget);
+    if (!target) return;
+
+    target.scrollIntoView({ behavior: "smooth", block: "start" });
+    target.classList.add("faq-card-flash");
+    window.setTimeout(() => target.classList.remove("faq-card-flash"), 1400);
   });
 });
 
