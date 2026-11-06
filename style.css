@@ -647,6 +647,14 @@ button {
   font-size: 16px;
 }
 
+.guide-subhead {
+  margin-top: 72px;
+}
+
+.guide-source-note {
+  margin: 20px 0 0;
+}
+
 /* ---------- Cards ---------- */
 
 .cards {
