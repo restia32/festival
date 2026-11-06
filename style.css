@@ -212,34 +212,6 @@ button {
   color: var(--cream);
 }
 
-.nav-cta {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  margin-left: 4px;
-  padding: 10px 16px;
-  border: 1px solid var(--ink);
-  border-radius: 999px;
-  background: transparent;
-  color: var(--ink);
-  font-size: 13px;
-  font-weight: 800;
-  white-space: nowrap;
-  cursor: pointer;
-  transition: background 0.2s ease, color 0.2s ease, transform 0.2s ease;
-}
-
-.nav-cta svg {
-  width: 15px;
-  height: 15px;
-}
-
-.nav-cta:hover {
-  background: var(--ink);
-  color: var(--cream);
-  transform: translateY(-1px);
-}
-
 .menu-toggle {
   display: none;
   width: 44px;
@@ -1839,13 +1811,13 @@ textarea {
 
 /* ---------- Reveal on scroll ---------- */
 
-[data-reveal] {
+body.reveal-ready [data-reveal] {
   opacity: 0;
   transform: translateY(22px);
   transition: opacity 0.8s ease, transform 0.8s cubic-bezier(0.2, 0.7, 0.2, 1);
 }
 
-[data-reveal].is-visible {
+body.reveal-ready [data-reveal].is-visible {
   opacity: 1;
   transform: none;
 }
@@ -1886,9 +1858,6 @@ textarea {
     display: grid;
   }
 
-  .nav-cta {
-    display: none;
-  }
 }
 
 @media (max-width: 980px) {

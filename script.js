@@ -125,6 +125,7 @@ const revealObserver = prefersReducedMotion
     );
 
 if (revealObserver) {
+  document.body.classList.add("reveal-ready");
   revealItems.forEach(item => revealObserver.observe(item));
 } else {
   revealItems.forEach(item => item.classList.add("is-visible"));
