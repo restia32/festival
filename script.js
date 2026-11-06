@@ -1,3 +1,5 @@
+import { supabase } from "./src/lib/supabase.js";
+
 const pages = document.querySelectorAll(".page");
 const navLinks = document.querySelectorAll(".nav-link");
 const navigation = document.getElementById("navigation");
@@ -169,35 +171,13 @@ lightbox.addEventListener("click", event => {
   if (event.target === lightbox) lightbox.close();
 });
 
-const SUPABASE_URL = (import.meta.env.VITE_SUPABASE_URL || "").replace(/\/+$/, "");
-const SUPABASE_ANON_KEY = import.meta.env.VITE_SUPABASE_ANON_KEY || "";
-const SUPABASE_CONFIGURED = /^https:\/\//.test(SUPABASE_URL) && Boolean(SUPABASE_ANON_KEY);
+const SUPABASE_CONFIGURED = Boolean(supabase);
 const reviewForm = document.getElementById("reviewForm");
 const reviewStatus = document.getElementById("reviewStatus");
 const reviewSummary = document.getElementById("reviewSummary");
 const reviewList = document.getElementById("reviewList");
 const refreshReviewsButton = document.getElementById("refreshReviews");
 const submitReviewButton = reviewForm.querySelector('button[type="submit"]');
-
-function supabaseHeaders(extraHeaders = {}) {
-  return {
-    apikey: SUPABASE_ANON_KEY,
-    Authorization: `Bearer ${SUPABASE_ANON_KEY}`,
-    ...extraHeaders
-  };
-}
-
-async function readSupabaseError(response) {
-  const body = await response.text();
-  if (!body) return `Review service returned HTTP ${response.status}.`;
-
-  try {
-    const payload = JSON.parse(body);
-    return payload.message || payload.error_description || payload.error || `Review service returned HTTP ${response.status}.`;
-  } catch {
-    return `Review service returned HTTP ${response.status}.`;
-  }
-}
 
 function setReviewStatus(message, isError = false) {
   reviewStatus.textContent = message;
@@ -261,16 +241,8 @@ async function loadReviews() {
 
   refreshReviewsButton.disabled = true;
   try {
-    const response = await fetch(`${SUPABASE_URL}/rest/v1/rpc/get_public_reviews`, {
-      method: "POST",
-      headers: supabaseHeaders({ "Content-Type": "application/json" }),
-      body: "{}"
-    });
-    if (!response.ok) {
-      throw new Error(await readSupabaseError(response));
-    }
-
-    const payload = await response.json();
+    const { data: payload, error } = await supabase.rpc("get_public_reviews");
+    if (error) throw error;
     if (!payload || !Array.isArray(payload.reviews)) {
       throw new Error("The review service returned an invalid response.");
     }
@@ -317,17 +289,8 @@ reviewForm.addEventListener("submit", async event => {
   setReviewStatus("Submitting your review…");
 
   try {
-    const response = await fetch(`${SUPABASE_URL}/rest/v1/reviews`, {
-      method: "POST",
-      headers: supabaseHeaders({
-        "Content-Type": "application/json",
-        Prefer: "return=minimal"
-      }),
-      body: JSON.stringify(submission)
-    });
-    if (!response.ok) {
-      throw new Error(await readSupabaseError(response));
-    }
+    const { error } = await supabase.from("reviews").insert(submission);
+    if (error) throw error;
 
     reviewForm.reset();
     setReviewStatus("Thank you — your review has been added.");
