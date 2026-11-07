@@ -3394,6 +3394,10 @@ body.dmap-open { overflow: hidden; }
   --page-banner-image: url("assets/picture/cultural%20dance/imagedc5.jpg");
 }
 
+.page:not(#contact):not(#faq)#gallery .page-banner {
+  background-position: center, center top;
+}
+
 #guide {
   --page-banner-image: url("assets/picture/explore%20taysan/baclao%20falls.jpg");
 }
