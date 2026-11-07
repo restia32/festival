@@ -1415,8 +1415,7 @@ button {
 .faq-banner {
   background:
     linear-gradient(115deg, rgba(53, 16, 29, 0.94) 0%, rgba(53, 16, 29, 0.72) 52%, rgba(104, 23, 47, 0.62) 100%),
-    radial-gradient(620px 320px at 88% 0%, rgba(213, 161, 59, 0.35), transparent 70%),
-    url("assets/picture/cultural%20dance/imagedc4.jpg") center 38% / cover no-repeat;
+    radial-gradient(620px 320px at 88% 0%, rgba(213, 161, 59, 0.35), transparent 70%);
 }
 
 .faq-banner p {
@@ -3369,3 +3368,36 @@ body.reveal-ready [data-reveal].is-visible {
 .dmap-close:hover { background: var(--cream); color: var(--ink); }
 .dmap-box iframe { flex: 1; width: 100%; border: 0; background: var(--cream); }
 body.dmap-open { overflow: hidden; }
+
+/* Use a topic-matched photo behind each tab header, while keeping Contact unchanged. */
+.page:not(#contact):not(#faq) .page-banner {
+  background-image:
+    linear-gradient(90deg, rgba(53, 16, 29, 0.82), rgba(53, 16, 29, 0.58)),
+    var(--page-banner-image);
+  background-position: center;
+  background-size: cover;
+}
+
+#about {
+  --page-banner-image: url("assets/picture/church/church3.jfif");
+}
+
+#activities {
+  --page-banner-image: url("assets/picture/cultural%20dance/imagedc1.jpg");
+}
+
+#education {
+  --page-banner-image: url("assets/picture/cultural%20dance/imagedc2.jpg");
+}
+
+#gallery {
+  --page-banner-image: url("assets/picture/cultural%20dance/imagedc5.jpg");
+}
+
+#guide {
+  --page-banner-image: url("assets/picture/explore%20taysan/baclao%20falls.jpg");
+}
+
+#discover {
+  --page-banner-image: url("assets/picture/explore%20taysan/highland%20view.jpg");
+}
