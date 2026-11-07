@@ -3331,3 +3331,19 @@ body.reveal-ready [data-reveal].is-visible {
     height: 42px;
   }
 }
+
+
+/* ---------- Digital map section (Tourist Guide) ---------- */
+.digital-map-text { max-width: 640px; margin: 0; color: var(--muted); }
+.digital-map-actions { margin-top: 22px; }
+.btn-outline { background: transparent; border-color: var(--line); color: var(--ink); text-decoration: none; }
+.btn-outline:hover { background: var(--ink); color: var(--cream); transform: translateY(-2px); }
+.dmap-modal { position: fixed; inset: 0; z-index: 500; display: flex; align-items: center; justify-content: center; padding: clamp(8px, 2vw, 24px); background: rgba(53, 16, 29, 0.72); backdrop-filter: blur(6px); }
+.dmap-modal[hidden] { display: none; }
+.dmap-box { display: flex; flex-direction: column; width: 100%; max-width: 1400px; height: 100%; overflow: hidden; border-radius: 22px; background: var(--paper); box-shadow: var(--shadow-md); }
+.dmap-bar { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 10px 14px 10px 22px; background: var(--ink); color: var(--cream); }
+.dmap-bar strong { font-family: var(--font-display); font-size: 18px; font-weight: 600; }
+.dmap-close { border: 1px solid rgba(247, 241, 232, 0.28); border-radius: 999px; background: transparent; color: var(--cream); padding: 8px 16px; font-size: 13px; font-weight: 800; cursor: pointer; }
+.dmap-close:hover { background: var(--cream); color: var(--ink); }
+.dmap-box iframe { flex: 1; width: 100%; border: 0; background: var(--cream); }
+body.dmap-open { overflow: hidden; }

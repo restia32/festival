@@ -749,6 +749,31 @@
             Map directions are provided by Google Maps; check the route and travel conditions before departure.
           </p>
         </div>
+
+        <!-- DIGITAL MAP -->
+        <div class="content-panel map-panel digital-map-panel" id="digitalMap" data-reveal>
+          <div class="map-head">
+            <div>
+              <span class="kicker">Explore the grounds</span>
+              <h2>Digital map</h2>
+            </div>
+            <div class="map-badges">
+              <span>St. Lorenzo Ruiz Parish</span>
+              <span>Interactive</span>
+            </div>
+          </div>
+          <p class="digital-map-text">Pick a place on the parish grounds and follow its illustrated route from the main gate. Drag to look around, and scroll or pinch to zoom.</p>
+          <div class="button-group digital-map-actions">
+            <button type="button" class="btn btn-primary" id="openDigitalMap" aria-haspopup="dialog" aria-controls="digitalMapModal">
+              Open digital map
+              <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </button>
+            <a class="btn btn-outline" href="digital-map/index.html" target="_blank" rel="noopener noreferrer">
+              Open in new tab
+              <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M6 3H3v10h10v-3M9 3h4v4M13 3 7 9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </a>
+          </div>
+        </div>
       </div>
     </section>
 
@@ -1263,6 +1288,17 @@
     <img alt="">
     <p></p>
   </dialog>
+
+  <!-- Digital map viewer -->
+  <div class="dmap-modal" id="digitalMapModal" role="dialog" aria-modal="true" aria-label="Digital map of St. Lorenzo Ruiz Parish" hidden>
+    <div class="dmap-box">
+      <div class="dmap-bar">
+        <strong>Digital map</strong>
+        <button type="button" class="dmap-close" id="closeDigitalMap" aria-label="Close digital map">&times; Close</button>
+      </div>
+      <iframe id="digitalMapFrame" title="Digital map of St. Lorenzo Ruiz Parish" data-src="digital-map/index.html"></iframe>
+    </div>
+  </div>
 
   <script type="module" src="script.js"></script>
 </body>

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#35101d">
+  <title>Parish Explorer | St. Lorenzo Ruiz Parish, Taysan</title>
+  <meta name="description" content="Explore the grounds of St. Lorenzo Ruiz Parish in Taysan. Find a place and follow its illustrated route from the main gate.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,400;1,9..144,600&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css?v=4">
+  <link rel="stylesheet" href="design.css?v=4">
+  <link rel="stylesheet" href="festival-theme.css?v=1">
+</head>
+<body>
+  <a class="skip-link" href="#mapPanel">Skip to the map</a>
+  <header class="site-header">
+    <a class="brand" href="./" aria-label="Parish Explorer home"><span class="brand-mark" aria-hidden="true">✦</span><span>Parish<span class="brand-light">Explorer</span><small>ST. LORENZO RUIZ PARISH</small></span></a>
+    <nav class="top-nav" aria-label="Main navigation"><a class="current" href="#mapPanel">Explore the grounds <span aria-hidden="true">↗</span></a><button id="helpBtn" type="button" aria-controls="helpPanel" aria-expanded="false"><span class="help-icon" aria-hidden="true">?</span> How to explore</button></nav>
+    <span class="location"><span aria-hidden="true">⌖</span> Taysan, Batangas</span>
+  </header>
+  <main class="page">
+    <div class="back-bar">
+      <a class="back-btn back-btn-primary" id="backGuide" href="../#guide" target="_top"><span aria-hidden="true">←</span> Back to Tourist Guide</a>
+      <a class="back-btn" id="backHome" href="../#home" target="_top">Home</a>
+    </div>
+    <header class="intro">
+      <div><p class="eyebrow"><span></span> A PLACE OF FAITH & COMMUNITY</p><h1>A little closer to <span>every corner.</span></h1><p>Welcome to St. Lorenzo Ruiz Parish. Find your way, one place at a time.</p></div>
+      <a class="intro-link" href="#mapPanel">Explore the parish <span aria-hidden="true">↓</span></a>
+    </header>
+    <section class="help-panel" id="helpPanel" hidden aria-label="Map instructions"><strong>Make yourself at home.</strong><p>Choose a destination to trace a route from the main gate. Drag to look around, scroll or pinch to zoom, and select the same destination again to clear your route. Keyboard: arrow keys to pan, + and - to zoom, 0 to reset, Escape to clear.</p></section>
+    <section class="map-panel" id="mapPanel" aria-label="Parish digital map">
+      <div class="workspace-bar"><div class="workspace-title"><span class="map-icon" aria-hidden="true">⌘</span> The parish grounds <span class="edition">INTERACTIVE MAP</span></div><div class="workspace-actions"><span class="map-state" id="mapState"><i></i> Ready to explore</span><button id="fullscreenBtn" type="button" aria-label="Expand map workspace" title="Expand map workspace">⛶</button></div></div>
+      <div class="workspace-body">
+        <aside class="legend" id="legend" aria-label="Destinations">
+          <div class="legend-heading"><p class="eyebrow">FIND YOUR WAY</p><h2>Where to?</h2><p>Pick a place. We’ll show the path.</p></div>
+          <nav aria-label="Map destinations"><ul class="legend-list" id="legendList"></ul></nav>
+          <div class="route-card"><span class="route-card-icon" aria-hidden="true">⌁</span><div><strong id="routeTitle">Your journey starts here</strong><p class="legend-status" id="legendStatus" role="status" aria-live="polite">Every route begins at the main gate.</p><button type="button" id="clearRoute" hidden>Clear route <span aria-hidden="true">×</span></button></div></div>
+          <div class="sidebar-foot"><span aria-hidden="true">✦</span> A little guidance. A warm welcome.</div>
+        </aside>
+        <div class="map-area">
+          <div class="map-frame">
+            <div class="map-viewport" id="viewport" tabindex="0" aria-label="Interactive map. Drag to move, scroll or pinch to zoom.">
+              <div class="map-world" id="world"><img class="map-base" id="mapBase" src="images/digitalmap.png" alt="Illustrated grounds of St. Lorenzo Ruiz Parish" draggable="false"></div>
+              <div class="tooltip" id="tooltip" aria-hidden="true"></div>
+              <div class="asset-notice" id="assetNotice" hidden><span class="empty-map-icon" aria-hidden="true">⌖</span><p class="eyebrow">THE PARISH GROUNDS</p><h3>Your map belongs here.</h3><p>The original map images are not available in this project yet. Add your PNG files to the <code>images/</code> folder to bring the grounds to life.</p><span class="asset-note">Your original placements and routes are preserved.</span></div>
+            </div>
+            <div class="map-badge"><span aria-hidden="true">⌖</span> ST. LORENZO RUIZ PARISH</div>
+            <div class="compass" title="Illustrated map orientation" aria-hidden="true"><span>MAP</span><svg viewBox="0 0 30 40" width="23" height="31"><path d="M15 3 26 35 15 27 4 35Z" fill="#294938"/><path d="M15 3v24L4 35Z" fill="#aab7a0"/></svg></div>
+            <div class="map-controls" aria-label="Map controls"><button type="button" id="zoomIn" aria-label="Zoom in">+</button><button type="button" id="zoomOut" aria-label="Zoom out">&minus;</button><span class="control-divider"></span><button type="button" id="zoomReset" aria-label="Reset map view" title="Reset map view"><svg viewBox="0 0 24 24" width="19" height="19" aria-hidden="true"><path d="M4 9V4m0 0h5M4 4l4 4m12 7v5m0 0h-5m5 0-4-4M9 4h6a5 5 0 0 1 5 5M4 15a5 5 0 0 0 5 5" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg></button></div>
+            <div class="map-bottom"><span class="gesture-hint"><span aria-hidden="true">✥</span> Drag to explore <b>·</b> Scroll to zoom</span><span class="zoom-readout" id="zoomLevel">100%</span></div>
+          </div>
+          <div class="map-caption"><span><i></i> Select a pin or a place to discover its route</span><span>Illustrated with care. Explore at your own pace.</span></div>
+        </div>
+      </div>
+    </section>
+    <div class="below-map"><span><span aria-hidden="true">↳</span> Eight places. One welcoming community.</span><span class="map-key"><i></i> Destination <b>····</b> Route from main gate</span></div>
+    <footer class="site-footer"><span>St. Lorenzo Ruiz Parish <span class="footer-dot">·</span> Taysan, Batangas</span><span>Find your way. Feel at home. <span class="footer-star" aria-hidden="true">✦</span></span></footer>
+  </main>
+  <script src="script.js?v=4"></script>
+  <script>
+    /* Back buttons: when the map is shown inside the festival site's viewer, close it and go to the chosen page. */
+    (function () {
+      function go(e, page) {
+        if (window.parent === window) return;
+        try {
+          e.preventDefault();
+          var p = window.parent;
+          var close = p.document.getElementById('closeDigitalMap');
+          if (close) close.click();
+          p.location.hash = page;
+        } catch (err) { window.top.location.href = '../#' + page; }
+      }
+      document.getElementById('backGuide').addEventListener('click', function (e) { go(e, 'guide'); });
+      document.getElementById('backHome').addEventListener('click', function (e) { go(e, 'home'); });
+    })();
+  </script>
+</body>
+</html>

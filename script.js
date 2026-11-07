@@ -348,3 +348,31 @@ window.addEventListener("hashchange", () => {
 // Open the correct tab when the website loads
 const initialPage = window.location.hash.substring(1) || "home";
 showPage(initialPage);
+
+
+// Digital map viewer (Tourist Guide)
+(function () {
+  const modal = document.getElementById("digitalMapModal");
+  const frame = document.getElementById("digitalMapFrame");
+  const openBtn = document.getElementById("openDigitalMap");
+  const closeBtn = document.getElementById("closeDigitalMap");
+  if (!modal || !frame || !openBtn || !closeBtn) return;
+
+  function openMap() {
+    if (!frame.getAttribute("src")) frame.setAttribute("src", frame.dataset.src);
+    modal.hidden = false;
+    document.body.classList.add("dmap-open");
+    closeBtn.focus();
+  }
+
+  function closeMap() {
+    modal.hidden = true;
+    document.body.classList.remove("dmap-open");
+    openBtn.focus();
+  }
+
+  openBtn.addEventListener("click", openMap);
+  closeBtn.addEventListener("click", closeMap);
+  modal.addEventListener("click", event => { if (event.target === modal) closeMap(); });
+  document.addEventListener("keydown", event => { if (event.key === "Escape" && !modal.hidden) closeMap(); });
+})();

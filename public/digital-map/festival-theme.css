@@ -1,0 +1,133 @@
+/* ==========================================================
+   Festival theme for the Parish Explorer digital map.
+   Loaded LAST so the original map code (style.css, design.css,
+   script.js) stays untouched. Colours, fonts and sizes match
+   the Batirangal Festival site.
+   ========================================================== */
+:root{
+  --ink:#35101d;--ink-2:#4a1425;--ink-soft:#553943;--muted:#7c6870;
+  --cream:#faf4e8;--paper:#fffdf8;--clay:#8d2440;--clay-deep:#68172f;--gold:#d5a13b;
+  --line:rgba(75,22,42,.12);--shadow-sm:0 8px 20px rgba(53,16,29,.07);--shadow-md:0 20px 50px rgba(53,16,29,.12);
+  --font-display:"Fraunces",Georgia,"Times New Roman",serif;
+  --font-body:"Manrope",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --font-head:var(--font-display);
+  --bg:var(--cream);--text:var(--ink);--brass:var(--gold);
+}
+html,body{background:none}
+body{font-family:var(--font-body);font-size:16px;line-height:1.65;color:var(--ink);-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;
+  background:radial-gradient(circle at 12% 0%,rgba(213,161,59,.15),transparent 34rem),radial-gradient(circle at 92% 18%,rgba(141,36,64,.08),transparent 30rem),var(--cream)}
+::selection{background:var(--gold);color:var(--ink)}
+button:focus-visible,a:focus-visible{outline:2px solid var(--clay);outline-offset:3px}
+.skip-link{background:var(--ink);color:var(--cream);border-radius:999px;font-weight:700}
+
+/* Header */
+.site-header{height:auto;min-height:72px;padding:14px max(clamp(16px,4vw,40px),calc((100vw - 1280px)/2));background:rgba(255,253,249,.92);color:var(--ink);border-bottom:1px solid var(--line);box-shadow:0 10px 30px rgba(53,16,29,.07);backdrop-filter:blur(18px) saturate(140%);-webkit-backdrop-filter:blur(18px) saturate(140%);position:sticky;top:0;z-index:200}
+.brand{font-family:var(--font-display);font-size:19px;font-weight:600;letter-spacing:-.01em;line-height:1.05}
+.brand-mark{width:44px;height:44px;border:0;border-radius:14px;background:var(--ink);color:var(--gold);font-size:22px;box-shadow:0 8px 18px rgba(53,16,29,.2);transition:transform .35s cubic-bezier(.2,.7,.2,1)}
+.brand:hover .brand-mark{transform:rotate(-8deg) scale(1.04)}
+.brand-light{color:var(--clay);font-weight:600}
+.brand small{font:700 10px/1 var(--font-body);letter-spacing:.14em;margin-top:5px;color:var(--muted)}
+.top-nav{gap:8px;font-size:13px;font-weight:700}
+.top-nav a{height:auto;gap:10px;padding:9px 16px;border:0;border-radius:999px;background:var(--ink);color:var(--cream)}
+.top-nav a span{color:var(--gold);font-size:15px}
+.top-nav button{color:var(--ink-soft);font-size:13px;font-weight:700;padding:9px 14px;border-radius:999px;transition:background .2s,color .2s}
+.top-nav button:hover{background:rgba(53,16,29,.07);color:var(--ink)}
+.help-icon{border-color:var(--clay);color:var(--clay);width:18px;height:18px;line-height:16px;font-size:11px}
+.location{color:var(--muted);font-size:12px;font-weight:700}
+.location>span{color:var(--clay);font-size:20px}
+
+/* Intro */
+.page{max-width:1280px;width:100%;padding:clamp(32px,5vw,56px) clamp(16px,4vw,40px) 0}
+.eyebrow,.intro .eyebrow,.legend-heading .eyebrow,.asset-notice .eyebrow{font:800 11px/1.4 var(--font-body);letter-spacing:.22em;text-transform:uppercase;color:var(--clay)}
+.eyebrow>span{background:var(--gold)}
+.intro h1{font-family:var(--font-display);font-size:clamp(34px,5vw,60px);font-weight:600;line-height:1.04;letter-spacing:-.03em;color:var(--ink)}
+.intro h1 span{color:var(--clay)}
+.intro p:not(.eyebrow){font-size:16px;color:var(--muted);line-height:1.65}
+.intro-link{font-size:13px;font-weight:800;color:var(--clay)}
+.intro-link span{border-color:var(--line);color:var(--clay)}
+.help-panel{background:var(--paper);border:1px solid var(--line);border-radius:22px;color:var(--ink);box-shadow:var(--shadow-sm);font-size:14px}
+.help-panel p{color:var(--ink-soft)}
+
+/* Map workspace */
+.map-panel{background:var(--paper);border:1px solid var(--line);border-radius:24px;box-shadow:var(--shadow-md)}
+.workspace-bar{height:auto;min-height:64px;padding:12px 24px;border-bottom:1px solid var(--line)}
+.workspace-title{font-family:var(--font-display);font-size:18px;font-weight:600;letter-spacing:-.01em;color:var(--ink)}
+.map-icon{color:var(--clay)}
+.edition{font:800 10px/1 var(--font-body);letter-spacing:.1em;background:var(--cream);border:1px solid var(--line);color:var(--ink-soft);border-radius:999px;padding:6px 11px}
+.map-state{font-size:12px;font-weight:700;color:var(--muted)}
+.map-state i,.map-caption i{background:#7ad3a5;box-shadow:0 0 0 4px rgba(122,211,165,.2)}
+.workspace-actions button{border-left-color:var(--line);color:var(--clay)}
+.workspace-body .legend,.legend{border-right:1px solid var(--line)}
+.legend-heading .eyebrow{font-size:11px;color:var(--clay)}
+.legend-heading h2{font-family:var(--font-display);font-size:30px;font-weight:600;letter-spacing:-.025em;color:var(--ink)}
+.legend-heading>p:last-child{font-size:13px;color:var(--muted)}
+.legend-btn{font-size:13px;color:var(--ink-soft);border-radius:14px}
+.legend-btn .swatch{background:var(--cream);color:var(--clay);border-radius:10px}
+.destination-copy small{font-size:11px;color:var(--muted)}
+.destination-arrow{color:var(--clay)}
+.legend-btn:hover{background:var(--cream);border-color:var(--line)}
+.legend-btn[aria-pressed="true"]{background:rgba(213,161,59,.14);border-color:rgba(213,161,59,.45);color:var(--ink)}
+.legend-btn[aria-pressed="true"] .swatch{background:rgba(141,36,64,.1);color:var(--clay)}
+.route-card{background:var(--cream);border:1px solid var(--line);border-radius:16px}
+.route-card-icon{color:var(--clay)}
+.route-card strong{font-size:13px;font-weight:800;color:var(--ink)}
+.legend-status{font-size:12px;color:var(--muted)}
+.legend-status strong{color:var(--clay)}
+.route-card button{color:var(--clay);font-size:12px;font-weight:800}
+.sidebar-foot{font-size:11px;color:var(--muted);border-top-color:var(--line)}
+.sidebar-foot span{color:var(--gold)}
+.map-area{background:var(--paper)}
+.map-frame{background:var(--ink-2);border:1px solid var(--line);border-radius:18px}
+.map-viewport{background:var(--cream)}
+.map-viewport:focus-visible{box-shadow:inset 0 0 0 3px var(--clay)}
+.map-badge{background:rgba(53,16,29,.92);color:var(--cream);border:0;border-radius:999px;padding:10px 14px;font-size:10px;letter-spacing:.12em;box-shadow:0 10px 24px rgba(0,0,0,.24)}
+.map-badge>span{color:var(--gold)}
+.compass>span{color:var(--cream);font-size:9px}
+.map-controls{background:var(--paper);border:1px solid var(--line);border-radius:14px}
+.map-controls button{color:var(--clay);font-family:var(--font-body)}
+.map-controls button:hover{background:var(--cream)}
+.control-divider{background:var(--line)}
+.gesture-hint,.zoom-readout{background:rgba(255,253,248,.94);border:1px solid var(--line);border-radius:999px;color:var(--ink-soft);font-size:12px;font-weight:700;padding:8px 13px}
+.map-caption{font-size:12px;color:var(--muted)}
+.map-caption>span:first-child{gap:8px}
+.tooltip{background:rgba(53,16,29,.94);font-size:13px;border-radius:12px}
+.tooltip small{color:rgba(250,244,232,.7);font-size:11px}
+.pin-label{font-size:12px;font-weight:800}
+.route-under{stroke:rgba(53,16,29,.4)}
+.below-map{font-size:13px;color:var(--muted)}
+.below-map>span:first-child>span,.map-key b{color:var(--gold)}
+.map-key{font-size:12px}
+.map-key i{background:var(--clay);border-color:var(--cream)}
+.asset-notice{background:radial-gradient(ellipse at 50% 45%,rgba(250,244,232,.8),transparent 65%),var(--cream)}
+.asset-notice h3{font-family:var(--font-display);font-weight:600;color:var(--ink)}
+.asset-notice .empty-map-icon{color:var(--clay);border-color:var(--line)}
+.asset-notice>p:not(.eyebrow){font-size:13px;color:var(--muted)}
+.asset-note{color:var(--muted);font-size:11px}
+.asset-notice code{background:var(--paper)}
+
+/* Footer - same dark footer as the festival site */
+.site-footer{margin:clamp(40px,6vw,72px) calc(-1*clamp(16px,4vw,40px)) 0;padding:clamp(28px,4vw,40px) clamp(16px,4vw,40px);border-top:0;color:rgba(250,244,232,.7);font-size:13px;
+  background:radial-gradient(600px 320px at 12% 0%,rgba(213,161,59,.13),transparent 70%),var(--ink)}
+.footer-dot{color:var(--gold)}
+.footer-star{color:var(--gold)}
+
+@media(max-width:700px){
+  .site-header{min-height:64px;padding:10px 16px}
+  .brand{font-size:17px}.brand-mark{width:38px;height:38px;font-size:19px}
+  .top-nav button{font-size:0;padding:10px}.help-icon{width:24px;height:24px;line-height:22px;font-size:12px}
+  .intro h1{font-size:34px;max-width:none}.intro p:not(.eyebrow){font-size:14px;max-width:none}
+  .legend-heading h2{font-size:24px}.legend-btn{font-size:12px}
+  .map-badge{font-size:8px;padding:7px 10px}
+  .gesture-hint,.zoom-readout{font-size:10px}
+  .site-footer{font-size:11px}
+  .below-map{font-size:12px}
+}
+
+/* Back buttons */
+.back-bar{display:flex;flex-wrap:wrap;gap:10px;margin:0 0 24px}
+.back-btn{display:inline-flex;align-items:center;gap:10px;padding:12px 20px;border:1px solid var(--line);border-radius:999px;background:transparent;color:var(--ink);font-size:14px;font-weight:800;transition:transform .25s ease,background .25s ease,color .25s ease,box-shadow .25s ease}
+.back-btn:hover{background:var(--ink);color:var(--cream);transform:translateY(-2px)}
+.back-btn-primary{border-color:transparent;background:linear-gradient(120deg,#f0d17d,var(--gold) 48%,#bd812a);color:var(--ink);box-shadow:0 14px 32px rgba(213,161,59,.24)}
+.back-btn-primary:hover{background:linear-gradient(120deg,#f0d17d,var(--gold) 48%,#bd812a);color:var(--ink);box-shadow:0 18px 38px rgba(213,161,59,.3)}
+.back-btn span{transition:transform .25s ease}.back-btn:hover span{transform:translateX(-3px)}
+@media(max-width:700px){.back-btn{padding:10px 16px;font-size:13px}.back-bar{margin-bottom:18px}}
